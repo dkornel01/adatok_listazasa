@@ -8,6 +8,33 @@ $(function(){
     ARTICLEELEM.append(tarto);
     
 })
+
+function osszealittablazat(lista,kulcsLista) {
+  let txt= "<div class='table-responsive'>";
+  txt +="<table class='table table-stripped table-bordered table-hover'>";
+  txt +="<thead class='table-dark'><tr>";
+  for (const key in kulcsLista){
+    txt+=`<th id='${key}' > ${kulcsLista[key]} </th>`
+  }
+  txt += "<th></th></tr ></thead>";
+  for (let index = 0; index < lista.length; index++) {
+    txt+= "<tr>";
+    const OBJECT=lista[index]
+    for (const key in OBJECT) {
+      if (key==='nev') {
+        txt += `<th> ${OBJECT[key]} </th>`
+      } else{
+        txt += `<td> ${OBJECT[key]}</td>`
+      }
+    }
+    txt+= `<td><button class="btn torol id="t${index}"> </button></td>`;
+    txt+="</tr>"
+  }
+  txt +="</table>"
+  txt +="</div>"
+  return txt
+}
+
 /*function osszealit(){
     let txt='<table class="table">';
     txt +='<table class="table-dark"';
@@ -48,31 +75,7 @@ $(function(){
     }
 
 }*/
-function osszealittablazat(lista,kulcsLista) {
-  let txt= "<div class='table-responsive'>";
-  txt +="<table class='table table-stripped table-bordered table-hover'>";
-  txt +="<thead class='table-dark'><tr>";
-  for (const key in kulcsLista){
-    txt+=`<th id='${key}' > ${kulcsLista[key]} </th>`
-  }
-  txt += "<th></th></tr ></thead>";
-  for (let index = 0; index < lista.length; index++) {
-    txt+= "<tr>";
-    const OBJECT=lista[index]
-    for (const key in OBJECT) {
-      if (key==='nev') {
-        txt += `<th> ${OBJECT[key]} </th>`
-      } else{
-        txt += `<td> ${OBJECT[key]}</td>`
-      }
-    }
-    txt+= `<td><button class="btn torol id="t${index}"> </button></td>`;
-    txt+="</tr>"
-  }
-  txt +="</table>"
-  txt +="</div>"
-  return txt
-}
+
 /*function Osszalait(){
     let txt=`<table class="table">
     <thead class="table-dark">
