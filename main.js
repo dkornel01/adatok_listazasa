@@ -1,7 +1,11 @@
-import { OBJEKTUMLISTA } from "./adat"
+import { OBJEKTUMLISTA } from "./adat.js"
+import { kulcsLista } from "./adat.js"
 
 $(function(){
-    let tarto=osszealittablazat(OBJEKTUMLISTA)
+   
+    let tarto=osszealittablazat(OBJEKTUMLISTA,kulcsLista);
+    const ARTICLEELEM=$("article");
+    ARTICLEELEM.append(tarto);
     
 })
 /*function osszealit(){
@@ -44,22 +48,22 @@ $(function(){
     }
 
 }*/
-function osszealittablazat(lista) {
+function osszealittablazat(lista,kulcsLista) {
   let txt= "<div class='table-responsive'>";
   txt +="<table class='table table-stripped table-bordered table-hover'>";
   txt +="<thead class='table-dark'><tr>";
-  for (const key in kulcslista){
+  for (const key in kulcsLista){
     txt+=`<th id='${key}' > ${kulcsLista[key]} </th>`
   }
   txt += "<th></th></tr ></thead>";
   for (let index = 0; index < lista.length; index++) {
     txt+= "<tr>";
     const OBJECT=lista[index]
-    for (const key in object) {
+    for (const key in OBJECT) {
       if (key==='nev') {
-        txt += `<th> ${element} </th>`
+        txt += `<th> ${OBJECT[key]} </th>`
       } else{
-        txt += `<td> ${element}</td>`
+        txt += `<td> ${OBJECT[key]}</td>`
       }
     }
     txt+= `<td><button class="btn torol id="t${index}"> </button></td>`;
@@ -68,7 +72,6 @@ function osszealittablazat(lista) {
   txt +="</table>"
   txt +="</div>"
   return txt
-  
 }
 /*function Osszalait(){
     let txt=`<table class="table">

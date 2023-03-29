@@ -5,3 +5,8 @@ export const OBJEKTUMLISTA=[
     {nev: "Zuri", fajta: "foxterrier",kor:10},
     {nev: "Happy", fajta: "Németjuhász",kor:1}
 ]
+export const kulcsLista={
+    nev: "név",
+    kor: "kor",
+    fajta: "fajta",
+}
