@@ -1,13 +1,29 @@
 import { OBJEKTUMLISTA } from "./adat.js"
 import { kulcsLista } from "./adat.js"
+import { szures } from "./szures.js";
+import { RendezesKorszerint,RendezesNevÉsFajtaszerni } from "./rendezes.js";
+
 
 $(function(){
-   
-    let tarto=osszealittablazat(OBJEKTUMLISTA,kulcsLista);
-    const ARTICLEELEM=$("article");
-    ARTICLEELEM.append(tarto);
-    
+init()
 })
+function init(){
+  let tarto=osszealittablazat(OBJEKTUMLISTA,kulcsLista);
+  const ARTICLEELEM=$("article");
+  ARTICLEELEM.append(tarto);
+  const NEVIN=$('#nev')
+  const FAJIN=$('#fajta')
+  const KORIN=$('#kor')
+  NEVIN.on("keyup",tablazatSzures("nev",NEVIN,ARTICLEELEM))
+  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM))
+  KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM))
+}
+function tablazatSzures(adat,okozo,ARTICLEELEM){
+  let nevertek=okozo.val()
+  let szurealista=szures(OBJEKTUMLISTA,adat,nevertek)
+  szurealista=osszealittablazat(szurealista,kulcsLista)
+  ARTICLEELEM.html(szurealista)
+}
 
 function osszealittablazat(lista,kulcsLista) {
   let txt= "<div class='table-responsive'>";
