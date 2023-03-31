@@ -1,12 +1,12 @@
 export const OBJEKTUMLISTA=[
-    {nev:"Dézi",fajta: "keverék" ,kor:2},
-    {nev:"Bodri", fajta: "mudi",kor:5},
-    {nev: "Loki", fajta: "tacskó",kor:6},
-    {nev: "Zuri", fajta: "foxterrier",kor:10},
-    {nev: "Happy", fajta: "Németjuhász",kor:1}
+    {nev:"Dézi",kor:"2",fajta: "keverék" },
+    {nev:"Bodri",kor:"5", fajta: "mudi"},
+    {nev: "Loki",kor:"6", fajta: "tacskó"},
+    {nev: "Zuri",kor:"10", fajta: "foxterrier"},
+    {nev: "Happy",kor:"1", fajta: "Németjuhász"}
 ]
 export const kulcsLista={
-    nev: "név",
+    nev: "nev",
     kor: "kor",
     fajta: "fajta",
 }
