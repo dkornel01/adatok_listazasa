@@ -11,16 +11,19 @@ function init(){
   let tarto=osszealittablazat(OBJEKTUMLISTA,kulcsLista);
   const ARTICLEELEM=$("article");
   ARTICLEELEM.append(tarto);
+  const szuresiFeltetelek=$('aside input')
   const NEVIN=$('#nev')
   const FAJIN=$('#fajta')
   const KORIN=$('#kor')
-  NEVIN.on("keyup",tablazatSzures("nev",NEVIN,ARTICLEELEM))
-  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM))
-  KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM))
+  szuresiFeltetelek.on("keyup",function(){tablazatSzures(ARTICLEELEM)})
+ /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
+  KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM,)) */
 }
-function tablazatSzures(adat,okozo,ARTICLEELEM){
-  let nevertek=okozo.val()
-  let szurealista=szures(OBJEKTUMLISTA,adat,nevertek)
+function tablazatSzures(ARTICLEELEM){
+  /**event.target */
+  let kulcs=event.currentTarget.
+  let nevertek=event.currentTarget.id
+  let szurealista=szures(OBJEKTUMLISTA,kulcs,nevertek)
   szurealista=osszealittablazat(szurealista,kulcsLista)
   ARTICLEELEM.html(szurealista)
 }
