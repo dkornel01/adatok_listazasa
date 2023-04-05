@@ -1,6 +1,6 @@
 import { OBJEKTUMLISTA } from "./adat.js"
 import { kulcsLista } from "./adat.js"
-import { szures } from "./szures.js";
+import { szures,szuresszam } from "./szures.js";
 import { RendezesKorszerint,RendezesNevÉsFajtaszerni } from "./rendezes.js";
 
 
@@ -16,20 +16,47 @@ function init(){
   const FAJIN=$('#fajta')
   const KORIN=$('#kor')
   szuresiFeltetelek.on("keyup",function(){tablazatSzures(ARTICLEELEM)})
+  $(document).ready(function(){
+    $("th").click(function(){
+      let kulcs=event.target.id
+      rendezes(ARTICLEELEM,kulcs)
+    })
+  })
+
+  
  /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
   KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM,)) */
 }
 function tablazatSzures(ARTICLEELEM){
   /**event.target */
-  let kulcs=event.currentTarget.
-  let nevertek=event.currentTarget.id
-  let szurealista=szures(OBJEKTUMLISTA,kulcs,nevertek)
+  let kulcs=event.target.id
+  let nevertek=event.target.value
+  let szurealista=[]
+  if (typeof OBJEKTUMLISTA[0][kulcs]==="number"){
+      szurealista=szuresszam(OBJEKTUMLISTA,kulcs,nevertek)
+     }
+     else{
+      szurealista=szures(OBJEKTUMLISTA,kulcs,nevertek)
+     } 
   szurealista=osszealittablazat(szurealista,kulcsLista)
   ARTICLEELEM.html(szurealista)
+}
+function rendezes(ARTICLEELEM,kulcs) {
+  let rendlist=[]
+  if (typeof OBJEKTUMLISTA[0][kulcs]==="number"){
+  RendezesKorszerint(OBJEKTUMLISTA,kulcs)
+  rendlist=osszealittablazat(OBJEKTUMLISTA,kulcsLista)
+  }
+  else{
+  RendezesNevÉsFajtaszerni(OBJEKTUMLISTA,kulcs)
+  rendlist=osszealittablazat(OBJEKTUMLISTA,kulcsLista)
+  }
+  ARTICLEELEM.html(rendlist)
 }
 
 function osszealittablazat(lista,kulcsLista) {
   let txt= "<div class='table-responsive'>";
+  console.log(lista)
   txt +="<table class='table table-stripped table-bordered table-hover'>";
   txt +="<thead class='table-dark'><tr>";
   for (const key in kulcsLista){

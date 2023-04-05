@@ -4,3 +4,11 @@ export function szures(lista,kulcs,szuresfeltetel){
     })
     return RESULT
 }
+export function szuresszam(lista,kulcs,szuresfeltetel){
+    let szurtLista=lista.filter(function(obj){
+        console.log((obj[kulcs]+szuresfeltetel))
+        return eval(obj[kulcs]+szuresfeltetel)
+    })
+    console.log(szurtLista)
+    return szurtLista
+}
