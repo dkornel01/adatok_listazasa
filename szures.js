@@ -2,6 +2,8 @@ export function szures(lista,kulcs,szuresfeltetel){
     const RESULT = lista.filter(function(a){
         return a[kulcs].includes(szuresfeltetel)
     })
+
+    console.log(RESULT)
     return RESULT
 }
 export function szuresszam(lista,kulcs,szuresfeltetel){

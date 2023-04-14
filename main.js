@@ -1,163 +1,88 @@
-import { OBJEKTUMLISTA } from "./adat.js"
-import { kulcsLista } from "./adat.js"
-import { szures,szuresszam } from "./szures.js";
-import { RendezesKorszerint,RendezesNevÉsFajtaszerni } from "./rendezes.js";
+import { OBJEKTUMLISTA } from "./adat.js";
+import { kulcsLista } from "./adat.js";
+import { szures, szuresszam } from "./szures.js";
+import { RendezesKorszerint, RendezesNevÉsFajtaszerni } from "./rendezes.js";
 
-
-$(function(){
-init()
-})
-function init(){
-  let tarto=osszealittablazat(OBJEKTUMLISTA,kulcsLista);
-  const ARTICLEELEM=$("article");
-  ARTICLEELEM.append(tarto);
-  const szuresiFeltetelek=$('aside input')
-  const NEVIN=$('#nev')
-  const FAJIN=$('#fajta')
-  const KORIN=$('#kor')
-  szuresiFeltetelek.on("keyup",function(){tablazatSzures(ARTICLEELEM)})
-  $(document).ready(function(){
-    $("th").click(function(){
-      let kulcs=event.target.id
-      rendezes(ARTICLEELEM,kulcs)
+$(function () {
+  const EREDETI=OBJEKTUMLISTA
+  init(OBJEKTUMLISTA,EREDETI);
+});
+function init(lista,EREDETI) {
+  let tarto = osszealittablazat(lista, kulcsLista);
+  const ARTICLEELEM = $("article");
+  ARTICLEELEM.html(tarto);
+  const SZURESIFELTETELEK = $("aside input");
+  SZURESIFELTETELEK.on("keyup", function () {
+    tablazatSzures(ARTICLEELEM);
+  });
+  $("th").click(function () {
+    let kulcs = event.target.id;
+    rendezes(lista, kulcs);
+  });
+  $("#alap").click(function(){
+    console.log("volt")
+      init(EREDETI)
     })
-  })
+    $("#felvetel").click(function(){
+      let nev=
+      let kor=
+      let faj=
+      })
 
-  
- /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
+  /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
   KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM,)) */
 }
-function tablazatSzures(ARTICLEELEM){
+function tablazatSzures(ARTICLEELEM) {
   /**event.target */
-  let kulcs=event.target.id
-  let nevertek=event.target.value
-  let szurealista=[]
-  if (typeof OBJEKTUMLISTA[0][kulcs]==="number"){
-      szurealista=szuresszam(OBJEKTUMLISTA,kulcs,nevertek)
-     }
-     else{
-      szurealista=szures(OBJEKTUMLISTA,kulcs,nevertek)
-     } 
-  szurealista=osszealittablazat(szurealista,kulcsLista)
-  ARTICLEELEM.html(szurealista)
+  let kulcs = event.target.id;
+  let nevertek = event.target.value;
+  let szurealista = [];
+  if (typeof OBJEKTUMLISTA[0][kulcs] === "number") {
+    szurealista = szuresszam(OBJEKTUMLISTA, kulcs, nevertek);
+  } else {
+    szurealista = szures(OBJEKTUMLISTA, kulcs, nevertek);
+  }
+ 
+  init(szurealista);
 }
-function rendezes(ARTICLEELEM,kulcs) {
-  let rendlist=[]
-  if (typeof OBJEKTUMLISTA[0][kulcs]==="number"){
-  RendezesKorszerint(OBJEKTUMLISTA,kulcs)
-  rendlist=osszealittablazat(OBJEKTUMLISTA,kulcsLista)
+function rendezes(lista, kulcs) {
+  if (typeof lista[0][kulcs] === "number") {
+    RendezesKorszerint(lista, kulcs);
+  } else {
+    RendezesNevÉsFajtaszerni(lista, kulcs);
+    
   }
-  else{
-  RendezesNevÉsFajtaszerni(OBJEKTUMLISTA,kulcs)
-  rendlist=osszealittablazat(OBJEKTUMLISTA,kulcsLista)
-  }
-  ARTICLEELEM.html(rendlist)
+  init(lista)
 }
 
-function osszealittablazat(lista,kulcsLista) {
-  let txt= "<div class='table-responsive'>";
-  console.log(lista)
-  txt +="<table class='table table-stripped table-bordered table-hover'>";
-  txt +="<thead class='table-dark'><tr>";
-  for (const key in kulcsLista){
-    txt+=`<th id='${key}' > ${kulcsLista[key]} </th>`
+function osszealittablazat(lista, kulcsLista) {
+  let txt = "<div class='table-responsive'>";
+  txt += "<table class='table table-stripped table-bordered table-hover'>";
+  txt += "<thead class='table-dark'><tr>";
+  for (const key in kulcsLista) {
+    txt += `<th id='${key}' > ${kulcsLista[key]} </th>`;
   }
   txt += "<th></th></tr ></thead>";
   for (let index = 0; index < lista.length; index++) {
-    txt+= "<tr>";
-    const OBJECT=lista[index]
+    txt += "<tr>";
+    const OBJECT = lista[index];
     for (const key in OBJECT) {
-      if (key==='nev') {
-        txt += `<th> ${OBJECT[key]} </th>`
-      } else{
-        txt += `<td> ${OBJECT[key]}</td>`
+      if (key === "nev") {
+        txt += `<th> ${OBJECT[key]} </th>`;
+      } else {
+        txt += `<td> ${OBJECT[key]}</td>`;
       }
     }
-    txt+= `<td><button class="btn torol id="t${index}"> </button></td>`;
-    txt+="</tr>"
+    txt += `<td><button class="btn torol id="t${index}"> </button></td>`;
+    txt += "</tr>";
   }
-  txt +="</table>"
-  txt +="</div>"
-  return txt
+  txt += "</table>";
+  txt += "</div>";
+  txt += "<div>"
+  txt += '<input type="text" id="nev" placeholder="nev" name="nev">'
+  txt += '<input type="text" id="kor" placeholder="kor" name="kor">'
+  txt += '<input type="text" id="fajta" placeholder="fajta" name="fajta">'
+  txt += '<input type="submit" id="felvetel" placeholder="felvetel" name="Új Felvetele">'
+  txt += "</div>";
+  return txt;
 }
-
-/*function osszealit(){
-    let txt='<table class="table">';
-    txt +='<table class="table-dark"';
-    txt +='<tr>'
-    txt +='<th id="nev">'
-    txt +='"név"'
-    txt +='</th>'
-    txt +='<th id="kor">'
-    txt +='"kor"'
-    txt +='</th>'
-    txt +='<th id="fajta">'
-    txt +='"fajta"'
-    txt +='</th>'
-    txt +='<th>'
-    txt +='</th>'
-    txt +='</tr>'
-    for (let index = 0; index < OBJEKTUMLISTA.length; index++) {
-        txt+='<tr>'
-        for (const nev in OBJEKTUMLISTA) {
-            if (Object.hasOwnProperty.call(OBJEKTUMLISTA, nev)) {
-                const element = OBJEKTUMLISTA[nev];
-                txt +=`<td>${element}</td>`
-            }
-        }
-        for (const kor in OBJEKTUMLISTA) {
-            if (Object.hasOwnProperty.call(OBJEKTUMLISTA, kor)) {
-                const element = OBJEKTUMLISTA[kor];
-                txt +=`<td>${element}</td>`
-            }
-        }
-        for (const fajta in OBJEKTUMLISTA) {
-            if (Object.hasOwnProperty.call(OBJEKTUMLISTA, fajta)) {
-                const element = OBJEKTUMLISTA[fajta];
-                txt +=`<td>${element}</td>`
-            }
-        }
-        txt+='</tr>'
-    }
-
-}*/
-
-/*function Osszalait(){
-    let txt=`<table class="table">
-    <thead class="table-dark">
-      <tr>
-        ${for (let index=0;index<osszealit.length;index){
-            
-        }}
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>`
-    
- }*/
