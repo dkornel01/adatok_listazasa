@@ -24,12 +24,11 @@ function init(lista,EREDETI) {
       init(EREDETI)
     })
   $("#felvetel").click(function(){
-    let nev=$("#elnevezes").val()
-    let kor=$("#eltkora").val()
-    let faj=$("#fajtaja").val()
-    lis=OBJEKTUMLISTA
-    
-    console.log(lis)
+    let neve=$("#elnevezes").val()
+    let kora=$("#eltkora").val()
+    let faja=$("#fajtaja").val()
+    let lis=OBJEKTUMLISTA
+    lis.push({nev:neve,kor:kora,faj:faja})
     init(lis)
     })
 
@@ -54,7 +53,6 @@ function rendezes(lista, kulcs) {
     RendezesKorszerint(lista, kulcs);
   } else {
     RendezesNevÉsFajtaszerni(lista, kulcs);
-    
   }
   init(lista)
 }
