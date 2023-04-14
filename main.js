@@ -23,11 +23,15 @@ function init(lista,EREDETI) {
     console.log("volt")
       init(EREDETI)
     })
-    $("#felvetel").click(function(){
-      let nev=
-      let kor=
-      let faj=
-      })
+  $("#felvetel").click(function(){
+    let nev=$("#elnevezes").val()
+    let kor=$("#eltkora").val()
+    let faj=$("#fajtaja").val()
+    lis=OBJEKTUMLISTA
+    
+    console.log(lis)
+    init(lis)
+    })
 
   /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
   KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM,)) */
@@ -57,7 +61,7 @@ function rendezes(lista, kulcs) {
 
 function osszealittablazat(lista, kulcsLista) {
   let txt = "<div class='table-responsive'>";
-  txt += "<table class='table table-stripped table-bordered table-hover'>";
+  txt += "<table class='table table-stripped table-bordered table-hover' id='table'>";
   txt += "<thead class='table-dark'><tr>";
   for (const key in kulcsLista) {
     txt += `<th id='${key}' > ${kulcsLista[key]} </th>`;
@@ -79,9 +83,9 @@ function osszealittablazat(lista, kulcsLista) {
   txt += "</table>";
   txt += "</div>";
   txt += "<div>"
-  txt += '<input type="text" id="nev" placeholder="nev" name="nev">'
-  txt += '<input type="text" id="kor" placeholder="kor" name="kor">'
-  txt += '<input type="text" id="fajta" placeholder="fajta" name="fajta">'
+  txt += '<input type="text" id="elnevezes" placeholder="elnevezes" name="nev">'
+  txt += '<input type="text" id="eltkora" placeholder="eltkora" name="kor">'
+  txt += '<input type="text" id="fajtaja" placeholder="fajtaja" name="fajta">'
   txt += '<input type="submit" id="felvetel" placeholder="felvetel" name="Új Felvetele">'
   txt += "</div>";
   return txt;
