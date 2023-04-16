@@ -13,7 +13,7 @@ function init(lista,EREDETI) {
   ARTICLEELEM.html(tarto);
   const SZURESIFELTETELEK = $("aside input");
   SZURESIFELTETELEK.on("keyup", function () {
-    tablazatSzures(ARTICLEELEM);
+    tablazatSzures(lista);
   });
   $("th").click(function () {
     let kulcs = event.target.id;
@@ -21,30 +21,42 @@ function init(lista,EREDETI) {
   });
   $("#alap").click(function(){
     console.log("volt")
-      init(EREDETI)
+      init(EREDETI,kulcsLista)
     })
   $("#felvetel").click(function(){
     let neve=$("#elnevezes").val()
-    let kora=$("#eltkora").val()
+    let kora=parseInt($("#eltkora").val())
     let faja=$("#fajtaja").val()
+    
     let lis=OBJEKTUMLISTA
-    lis.push({nev:neve,kor:kora,faj:faja})
+    lis.push({nev:neve,kor:kora,fajta:faja})
+    console.log(lis)
     init(lis)
     })
 
   /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
   KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM,)) */
 }
-function tablazatSzures(ARTICLEELEM) {
+function tablazatSzures(lista) {
   /**event.target */
   let kulcs = event.target.id;
   let nevertek = event.target.value;
   let szurealista = [];
-  if (typeof OBJEKTUMLISTA[0][kulcs] === "number") {
-    szurealista = szuresszam(OBJEKTUMLISTA, kulcs, nevertek);
-  } else {
-    szurealista = szures(OBJEKTUMLISTA, kulcs, nevertek);
+  if (OBJEKTUMLISTA.length>lista.length){
+    if (typeof OBJEKTUMLISTA[0][kulcs] === "number") {
+      szurealista = szuresszam(OBJEKTUMLISTA, kulcs, nevertek);
+    } else {
+      szurealista = szures(OBJEKTUMLISTA, kulcs, nevertek);
+    }
   }
+  else{
+    if (typeof OBJEKTUMLISTA[0][kulcs] === "number") {
+      szurealista = szuresszam(lista, kulcs, nevertek);
+    } else {
+      szurealista = szures(lista, kulcs, nevertek);
+    }
+  }
+  
  
   init(szurealista);
 }
