@@ -7,7 +7,6 @@ function init(lista){
     let cards=card_maker(OBJEKTUMLISTA);
     const ARTICLEELEM=$("article");
     ARTICLEELEM.html(cards);
-    const FOOTERELEM=$("footer");
     let card
     $("#nagyitas0").click(function(){
         card=event.target.name
@@ -102,8 +101,14 @@ function nagyitas(card,ARTICLEELEM){
             txt +='<div class="row">'
             txt+='<div class="col p-3".col>'
                 txt+='<input type="button" id="bal" value="elözö" name=bal>'
+            txt+='</div>'
+            txt+='<div class="col p-3".col>'
                 txt+='<input type="button" id="alap" value="alap" name=jobb>'
+            txt+='</div>'
+            txt+='<div class="col p-3".col>'
                 txt+='<input type="button" id="job" value="következö" name=jobb>'
             txt+='</div>'
+            txt+='</div>'
+            txt+='</div>'   
             ARTICLEELEM.html(txt);
 }

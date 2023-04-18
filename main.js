@@ -27,11 +27,44 @@ function init(lista,EREDETI) {
     let neve=$("#elnevezes").val()
     let kora=parseInt($("#eltkora").val())
     let faja=$("#fajtaja").val()
-    
+    if (kora==="numver"){
     let lis=OBJEKTUMLISTA
     lis.push({nev:neve,kor:kora,fajta:faja})
     console.log(lis)
     init(lis)
+    }
+    else{
+      let footerelem=$("footer");
+      let hiba="nem megfelelő adatokat adott meg"
+      footerelem.html(hiba)
+      init()
+    }
+    })
+    let torles
+    $("#törles0").click(function(){
+      torles=event.target.name
+      lista.pop(torles)
+      init(lista)
+    })
+    $("#törles1").click(function(){
+      torles=event.target.name
+      lista.pop(torles)
+      init(lista)
+    })
+    $("#törles2").click(function(){
+      torles=event.target.name
+      lista.pop(torles)
+      init(lista)
+    })
+    $("#törles3").click(function(){
+      torles=event.target.name
+      lista.pop(torles)
+      init(lista)
+    })
+    $("#törles4").click(function(){
+      torles=event.target.name
+      lista.pop(torles)
+      init(lista)
     })
 
   /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
@@ -73,6 +106,7 @@ function osszealittablazat(lista, kulcsLista) {
   let txt = "<div class='table-responsive'>";
   txt += "<table class='table table-stripped table-bordered table-hover' id='table'>";
   txt += "<thead class='table-dark'><tr>";
+  let szamlalo=0;
   for (const key in kulcsLista) {
     txt += `<th id='${key}' > ${kulcsLista[key]} </th>`;
   }
@@ -87,7 +121,8 @@ function osszealittablazat(lista, kulcsLista) {
         txt += `<td> ${OBJECT[key]}</td>`;
       }
     }
-    txt += `<td><button class="btn torol id="t${index}"> </button></td>`;
+    txt += `<td><input type="button" id="törles${szamlalo}" value="törles" name=${szamlalo}>`;
+    szamlalo=szamlalo+1
     txt += "</tr>";
   }
   txt += "</table>";
