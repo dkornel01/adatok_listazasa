@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+header{
+    text-align: center;
+}
+nav ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+aside{
+    margin: 10px;
+}
+#resetbut{
+    margin: 10px;
+}
+article{
+    margin: 10px;
+}
+main{
+    margin: auto;
+}
+body{
+    background-color: blanchedalmond;
+}  
+table{
+    background-color: gainsboro;
+}
+td,th,tr{
+    border: solid 1px black;
+}
+.felvevo{
+    margin: 10px 0 10px 0;
+}

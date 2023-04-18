@@ -92,10 +92,12 @@ function osszealittablazat(lista, kulcsLista) {
   }
   txt += "</table>";
   txt += "</div>";
-  txt += "<div>"
+  txt += "<div class='inputs_box'>"
   txt += '<input type="text" id="elnevezes" placeholder="elnevezes" name="nev">'
   txt += '<input type="text" id="eltkora" placeholder="eltkora" name="kor">'
   txt += '<input type="text" id="fajtaja" placeholder="fajtaja" name="fajta">'
+  txt += "</div>";
+  txt += "<div class='felvevo'>"
   txt += '<input type="submit" id="felvetel" placeholder="felvetel" name="Új Felvetele">'
   txt += "</div>";
   return txt;
