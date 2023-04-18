@@ -7,13 +7,13 @@ function init(lista){
     let cards=card_maker(OBJEKTUMLISTA);
     const ARTICLEELEM=$("article");
     ARTICLEELEM.html(cards);
-    const FOTOTERELEM=$("footer")
+    const FOOTERELEM=$("footer")
     $("#nagyitas").click(function(){
         console.log("volt")
         let card=event.target.footer
         console.log(card)
         let tarto=nagyitas(card)
-        FOTOTERELEM.html(tarto);
+        FOOTERELEM.html(tarto);
     })
 
 };
