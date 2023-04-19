@@ -92,7 +92,7 @@ function rendezes(lista, kulcs) {
 
 function osszealittablazat(lista, kulcsLista) {
   let txt = "<div class='table-responsive'>";
-  txt += "<table class='table table-stripped table-bordered table-hover' id='table'>";
+  txt += "<table class='table table-stripped table-bordered table-hover table-responsive'  id='table'>";
   txt += "<thead class='table-dark'><tr>";
   let szamlalo=0;
   for (const key in kulcsLista) {
