@@ -41,7 +41,7 @@ function init(lista,EREDETI) {
     else{
       let footerelem=$("footer");
       let hiba="<div class='bg-danger'>"
-      hiba+="nem megfelelő adatokat adott meg"
+      hiba+="nem megfelelő adatott adott meg az eletkorban csak számot adhat meg"
       hiba+="</div>"
       footerelem.html(hiba)
       init(lista)
@@ -117,7 +117,7 @@ function osszealittablazat(lista, kulcsLista) {
   txt += "</div>";
   txt += "<div class='inputs_box'>"
   txt += '<input type="text" id="elnevezes" placeholder="elnevezes" name="nev">'
-  txt += '<input type="text" id="eltkora" placeholder="eltkora" name="kor">'
+  txt += '<input type="text" id="eltkora" placeholder="eletkora" name="kor">'
   txt += '<input type="text" id="fajtaja" placeholder="fajtaja" name="fajta">'
   txt += "</div>";
   txt += "<div class='felvevo'>"
