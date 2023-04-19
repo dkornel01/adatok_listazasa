@@ -6,7 +6,6 @@ export function szures(lista,kulcs,szuresfeltetel){
 }
 export function szuresszam(lista,kulcs,szuresfeltetel){
     let szurtLista=lista.filter(function(obj){
-        console.log((obj[kulcs]+szuresfeltetel))
         return eval(obj[kulcs]+szuresfeltetel)
     })
     return szurtLista
