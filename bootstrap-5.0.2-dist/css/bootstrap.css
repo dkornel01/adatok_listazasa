@@ -7440,6 +7440,18 @@ textarea.form-control-lg {
 .bg-orange{
   background-color: #fd7e14;
 }
+.bg-snow{
+  background-color: snow;
+}
+.bg-sandy{
+  background-color: sandybrown;
+}
+.bg-nava{
+  background-color: navajowhite;
+}
+.bg-gold{
+  background-color:   orange;
+}
 
 .user-select-all {
   -webkit-user-select: all !important;
