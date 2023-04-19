@@ -27,7 +27,8 @@ function init(lista,EREDETI) {
     let neve=$("#elnevezes").val()
     let kora=parseInt($("#eltkora").val())
     let faja=$("#fajtaja").val()
-    if (kora==="numver"){
+    console.log(kora)
+    if (typeof kora==="number"){
     let lis=OBJEKTUMLISTA
     lis.push({nev:neve,kor:kora,fajta:faja})
     console.log(lis)
@@ -37,35 +38,16 @@ function init(lista,EREDETI) {
       let footerelem=$("footer");
       let hiba="nem megfelelő adatokat adott meg"
       footerelem.html(hiba)
-      init()
+      init(lista)
     }
     })
     let torles
-    $("#törles0").click(function(){
+    $("#törles").click(function(){
       torles=event.target.name
-      lista.pop(torles)
+      lista.splice(torles,1)
       init(lista)
     })
-    $("#törles1").click(function(){
-      torles=event.target.name
-      lista.pop(torles)
-      init(lista)
-    })
-    $("#törles2").click(function(){
-      torles=event.target.name
-      lista.pop(torles)
-      init(lista)
-    })
-    $("#törles3").click(function(){
-      torles=event.target.name
-      lista.pop(torles)
-      init(lista)
-    })
-    $("#törles4").click(function(){
-      torles=event.target.name
-      lista.pop(torles)
-      init(lista)
-    })
+    
 
   /*  FAJIN.on("keyup",tablazatSzures("fajok",FAJIN,ARTICLEELEM,))
   KORIN.on("keyup",tablazatSzures("kor",KORIN,ARTICLEELEM,)) */
@@ -121,7 +103,7 @@ function osszealittablazat(lista, kulcsLista) {
         txt += `<td> ${OBJECT[key]}</td>`;
       }
     }
-    txt += `<td><input type="button" id="törles${szamlalo}" value="törles" name=${szamlalo}>`;
+    txt += `<td><input type="button" id="törles" value="törles" name=${szamlalo}>`;
     szamlalo=szamlalo+1
     txt += "</tr>";
   }

@@ -13,22 +13,22 @@ function init(lista){
         nagyitas(card,ARTICLEELEM)
         select(card,ARTICLEELEM)
     })
-    $("#nagyitas1").click(function(){
+    $("#nagyitas").click(function(){
         card=event.target.name
         nagyitas(card,ARTICLEELEM)
         select(card,ARTICLEELEM)      
     })
-    $("#nagyitas2").click(function(){
+    $("#nagyitas").click(function(){
         card=event.target.name
         nagyitas(card,ARTICLEELEM)
         select(card,ARTICLEELEM)       
     })
-    $("#nagyitas3").click(function(){
+    $("#nagyitas").click(function(){
         card=event.target.name
         nagyitas(card,ARTICLEELEM)
         select(card,ARTICLEELEM)       
     })
-    $("#nagyitas4").click(function(){
+    $("#nagyitas").click(function(){
         card=event.target.name
         nagyitas(card,ARTICLEELEM)
         select(card,ARTICLEELEM)   
@@ -74,7 +74,7 @@ function card_maker(OBJEKTUMLISTA){
                 txt+=`<div class="card-body">${object[key]}</div>`;
             }
         }
-        txt+=`<div class="card-footer" id=nagyitas${szamolo}><input type="button" value="nagyitas" name=${szamolo}></div>`;
+        txt+=`<div class="card-footer" id=nagyitas><input type="button" value="nagyitas" name=${szamolo}></div>`;
         szamolo=szamolo+1;
         console.log(szamolo)
         txt+='</div>';
