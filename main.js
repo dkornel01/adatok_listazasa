@@ -28,15 +28,21 @@ function init(lista,EREDETI) {
     let kora=parseInt($("#eltkora").val())
     let faja=$("#fajtaja").val()
     console.log(kora)
-    if (typeof kora==="number"){
-    let lis=OBJEKTUMLISTA
-    lis.push({nev:neve,kor:kora,fajta:faja})
-    console.log(lis)
-    init(lis)
+    let rossz=isNaN(kora)
+    if (rossz!=true){
+      let footerelem=$("footer");
+      let semmi=""
+      footerelem.html(semmi)
+      let lis=OBJEKTUMLISTA
+      lis.push({nev:neve,kor:kora,fajta:faja})
+      console.log(lis)
+      init(lis)
     }
     else{
       let footerelem=$("footer");
-      let hiba="nem megfelelő adatokat adott meg"
+      let hiba="<div class='bg-danger'>"
+      hiba+="nem megfelelő adatokat adott meg"
+      hiba+="</div>"
       footerelem.html(hiba)
       init(lista)
     }
