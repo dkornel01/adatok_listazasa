@@ -21,7 +21,7 @@ function init(lista,EREDETI) {
   });
   $("#alap").click(function(){
     console.log("volt")
-      init(EREDETI,kulcsLista)
+      init(EREDETI)
     })
   $("#felvetel").click(function(){
     let neve=$("#elnevezes").val()
